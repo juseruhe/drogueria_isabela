@@ -46,9 +46,13 @@ $(document).ready(function () {
             e.preventDefault();
 
             var codigo_barras = $('#codigo_barras').val()
+            var precio = $('#precio').val()
 
             if (codigo_barras.length < 4 || codigo_barras.length > 13) {
                 $('#mensaje').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Código de barras debe contener entre 4-13 números <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
+            } else if ( precio < 50) {
+
+                $('#mensaje').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Precio del producto no puede ser menor a 50 pesos  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
             } else {
 
                 $.ajax({
@@ -113,6 +117,9 @@ $(document).ready(function () {
 
         if (codigo_barras.length < 4 || codigo_barras.length > 13) {
             $('#mensajeEditarProducto').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Código de barras debe contener entre 4-13 números <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
+        }
+        else if(precio < 50){
+            $('#mensajeEditarProducto').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Precio del producto no puede ser menor a 50 pesos <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
         }
         else {
             $.ajax({
