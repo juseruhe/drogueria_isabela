@@ -6,6 +6,8 @@ if(!localStorage.getItem('numero_documento')){
 }
 
 $(document).ready(function () {
+
+    
     $('#cerrarSesion').click(function(e){
         e.preventDefault()
         localStorage.removeItem('numero_documento')

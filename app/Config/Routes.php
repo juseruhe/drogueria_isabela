@@ -47,6 +47,9 @@ $routes->get('/productos/(:num)','ProductoController::mostrarProducto/$1');
 $routes->put('/productos/(:num)','ProductoController::actualizarProducto/$1');
 $routes->delete('/productos/(:num)','ProductoController::eliminarProducto/$1');
 
+// Productos-Ventas
+$routes->get('/productos_ventas','ProductoVentaController::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

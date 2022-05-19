@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
 
     <div class="container my-4">
         <div class="row">
@@ -32,7 +34,7 @@
             </a>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
-            <a class="navbar-brand btn btn-secondary text-white my-1 form-control" href="#">
+            <a class="navbar-brand btn btn-secondary text-white my-1 form-control" href="/productos_ventas">
                 <i class="bi bi-cash-coin"></i> VENDER
             </a>
         </div>
