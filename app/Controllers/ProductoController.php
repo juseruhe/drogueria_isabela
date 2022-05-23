@@ -81,4 +81,13 @@ class ProductoController extends BaseController
 		return $this->response->setJSON($consultaProducto);
 
 	}
+
+	public function buscarProductoOCodigoBarras($busqueda){
+		$modelo = new Producto();
+       $consulta = $modelo->like('nombre',$busqueda,'both')
+	   ->orLike('codigo_barras',$busqueda,'both')
+	   ->findAll();
+   
+		return $this->response->setJSON($consulta);
+	}
 }

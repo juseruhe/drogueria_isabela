@@ -7,5 +7,6 @@
 <script src="js/main.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
 <script src="js/productos.js"></script>
+<script src="js/producto_venta.js"></script>
 </body>
 </html>

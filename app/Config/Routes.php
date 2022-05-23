@@ -46,9 +46,11 @@ $routes->post('/productos','ProductoController::crearProducto');
 $routes->get('/productos/(:num)','ProductoController::mostrarProducto/$1');
 $routes->put('/productos/(:num)','ProductoController::actualizarProducto/$1');
 $routes->delete('/productos/(:num)','ProductoController::eliminarProducto/$1');
+$routes->get('/productos/buscar/(:any)','ProductoController::buscarProductoOCodigoBarras/$1');
 
 // Productos-Ventas
 $routes->get('/productos_ventas','ProductoVentaController::index');
+
 
 /*
  * --------------------------------------------------------------------

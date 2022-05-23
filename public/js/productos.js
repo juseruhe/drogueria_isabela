@@ -42,47 +42,62 @@ $(document).ready(function () {
 
         $('#crearProducto').modal('show')
 
-        $('#formularioCrearProducto').submit(function (e) {
-            e.preventDefault();
-
-            var codigo_barras = $('#codigo_barras').val()
-            var precio = $('#precio').val()
-
-            if (codigo_barras.length < 4 || codigo_barras.length > 13) {
-                $('#mensaje').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Código de barras debe contener entre 4-13 números <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
-            } else if ( precio < 50) {
-
-                $('#mensaje').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Precio del producto no puede ser menor a 50 pesos  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
-            } else {
-
-                $.ajax({
-                    type: "post",
-                    url: "/productos",
-                    data: $('#formularioCrearProducto').serialize(),
-                    success: function (response) {
-                        $('#crearProducto').modal('hide')
-
-                        swal({
-                            title: "Se inserto un nuevo Producto ",
-                            text: "Por Favor verifique los datos insertados",
-                            icon: "success"
-                        })
-
-                        table.ajax.reload()
-
-                    }, error: function (response) {
-                        $('#crearProducto').modal('hide')
-
-                        swal({
-                            title: "¡Hay un error ! " + response.status,
-                            text: "Por Favor verifique los datos insertados ",
-                            icon: "error"
-                        })
-                    }
-                });
-            }
-        });
     });
+
+    $('#formularioCrearProducto').submit(function (e) {
+        e.preventDefault();
+
+        var codigo_barras = $('#codigo_barras').val()
+        var precio = $('#precio').val()
+
+        if (codigo_barras.length < 4 || codigo_barras.length > 13) {
+            $('#mensaje').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Código de barras debe contener entre 4-13 números <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
+        } else if (precio < 50) {
+
+            $('#mensaje').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Precio del producto no puede ser menor a 50 pesos  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
+        } else {
+
+            $.ajax({
+                type: "post",
+                url: "/productos",
+                data: $('#formularioCrearProducto').serialize(),
+                success: function (response) {
+                    $('#crearProducto').modal('hide')
+
+                    swal({
+                        title: "Se inserto un nuevo Producto ",
+                        text: "Por Favor verifique los datos insertados",
+                        icon: "success"
+                    })
+
+                    $('#nombre').val("")
+                    $('#codigo_barras').val("")
+                    $('#precio').val("")
+
+                    table.ajax.reload()
+
+                }, error: function (response) {
+                    $('#crearProducto').modal('hide')
+
+                    swal({
+                        title: "¡Hay un error ! " + response.status,
+                        text: "Por Favor verifique los datos insertados ",
+                        icon: "error"
+                    })
+                }
+            });
+        }
+    });
+
+    // Borrar Datos Cuando cierre modal de crear
+    /* $('#crearProducto').on('hidden.bs.modal', function (e) {
+         e.preventDefault()
+ 
+         $('#nombre').val("")
+         $('#codigo_barras').val("")
+         $('#precio').val("")
+ 
+     });*/
 
     // Eventos click de editar 
     $(document).on("click", "#botonEditarProducto", function (e) {
@@ -102,7 +117,6 @@ $(document).ready(function () {
 
         $('#editarProducto').modal('show')
 
-
     });
 
     // Actualizar
@@ -118,7 +132,7 @@ $(document).ready(function () {
         if (codigo_barras.length < 4 || codigo_barras.length > 13) {
             $('#mensajeEditarProducto').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Código de barras debe contener entre 4-13 números <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
         }
-        else if(precio < 50){
+        else if (precio < 50) {
             $('#mensajeEditarProducto').html("<div class='alert alert-danger'> <i class='bi bi-x-circle-fill'></i> El Precio del producto no puede ser menor a 50 pesos <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>")
         }
         else {
