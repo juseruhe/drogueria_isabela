@@ -22,36 +22,36 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="form-group">
-            <input type="hidden" name="" disabled id="productoVentaId" class="form-control">
+            <input type="hidden" name="producto_id" disabled id="productoVentaId" class="form-control">
                 <label for="codigo_barras" class="label">Código de Barras:</label>
-                <input type="number" disabled required name="" id="productoVentaCodigoBarras" class="form-control">
+                <input type="number" disabled required name="codigo_barras" id="productoVentaCodigoBarras" class="form-control">
             </div>
         </div>
 
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="form-group">
                 <label for="codigo_barras" class="label">Nombre del Producto:</label>
-                <input type="text" disabled required name="" id="productoVentaNombre" class="form-control">
+                <input type="text" disabled required name="nombre" id="productoVentaNombre" class="form-control">
             </div>
         </div>
 
         <div class="col-lg-2 col-md-2 col-sm-12">
             <div class="form-group">
                 <label for="codigo_barras" class="label">Cantidad:</label>
-                <input type="number" disabled required name="" id="productoVentaCantidad" class="form-control">
+                <input type="number" disabled required name="cantidad" id="productoVentaCantidad" class="form-control">
             </div>
         </div>
 
         <div class="col-lg-2 col-md-2 col-sm-12">
             <div class="form-group">
                 <label for="codigo_barras" class="label">Valor:</label>
-                <input type="number" disabled required name="" id="productoVentaPrecio" class="form-control">
+                <input type="number" disabled required name="precio" id="productoVentaPrecio" class="form-control">
             </div>
         </div>
 
         <div class="col-lg-2 col-md-2 col-sm-12 ">
              <div class="my-4"></div>
-            <button class="btn btn-secondary bi bi-plus-circle form-control"></button>
+            <button type="submit" id="productoVentaBoton" disabled class="btn btn-secondary bi bi-plus-circle form-control"></button>
         </div>
         
     </div>
@@ -72,5 +72,9 @@
 </div>
 
 <?= $productos_encontrados ?>
+
+<?= $editarProductoVenta ?>
+
+<?= $eliminarProductoVenta ?>
 
 <?= $footer ?>

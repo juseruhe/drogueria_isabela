@@ -14,7 +14,7 @@ class Venta extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['producto_id','cantidad'];
 
 	// Dates
 	protected $useTimestamps        = false;

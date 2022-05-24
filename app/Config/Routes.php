@@ -50,6 +50,12 @@ $routes->get('/productos/buscar/(:any)','ProductoController::buscarProductoOCodi
 
 // Productos-Ventas
 $routes->get('/productos_ventas','ProductoVentaController::index');
+$routes->get('/productos_ventas/mostrarProductosVentas','ProductoVentaController::mostrarProductosVentas');
+$routes->post('/productos_ventas','ProductoVentaController::crearProductoVenta');
+$routes->get('/productos_ventas/(:num)','ProductoVentaController::mostrarProductoVenta/$1');
+$routes->put('/productos_ventas/(:num)','ProductoVentaController::actualizarProductoVenta/$1');
+$routes->delete('/productos_ventas/(:num)','ProductoVentaController::eliminarProductoVenta/$1');
+
 
 
 /*
