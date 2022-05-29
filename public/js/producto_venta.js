@@ -59,7 +59,7 @@ $(document).ready(function () {
 
         $('#productoVentaId').prop('disabled', false)
         $('#productoVentaCantidad').prop('disabled', false)
-        $('#productoVentaBoton').prop('disabled',false)
+        $('#productoVentaBoton').prop('disabled', false)
 
         $('#productosEncontrados').modal('hide')
 
@@ -79,6 +79,7 @@ $(document).ready(function () {
             { data: "nombre" },
             { data: "cantidad" },
             { data: "precio" },
+            { data: "total" },
             {
                 "data": "id",
                 "bSortable": false,
@@ -142,7 +143,11 @@ $(document).ready(function () {
                 $('#productoVentaCantidad').prop('disabled', true)
                 $('#productoVentaBoton').prop('disabled', true)
 
+                $('#busqueda').val('')
+
+                total()
                 tablaProductosVentas.ajax.reload()
+
             }, error: function (error) {
                 swal({
                     title: "Error al agregar un producto a la venta: " + error.status,
@@ -170,7 +175,7 @@ $(document).ready(function () {
     //Actualizar Productos-Ventas
     $('#formularioEditarProductoVenta').submit(function (e) {
         e.preventDefault();
-        
+
         var id = $('#editarProductoVentaId').val()
         var cantidad = $('#editarProductoVentaCantidad').val()
 
@@ -184,7 +189,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "put",
-            url: "/productos_ventas/"+id,
+            url: "/productos_ventas/" + id,
             data: datos,
             success: function (response) {
                 $('#editarProductoVenta').modal('hide')
@@ -195,11 +200,13 @@ $(document).ready(function () {
                     icon: "success"
                 })
 
+                total()
                 tablaProductosVentas.ajax.reload()
-            }, error: function(error){
+
+            }, error: function (error) {
 
                 swal({
-                    title: "Error al actualizar Producto a la venta: "+error.status,
+                    title: "Error al actualizar Producto a la venta: " + error.status,
                     text: "Por Favor Verifique los datos",
                     icon: "error"
                 })
@@ -209,7 +216,7 @@ $(document).ready(function () {
     });
 
     // Llamar si quiere eliminar producto-venta
-    $(document).on("click","#botonEliminarProductoVenta", function (e) {
+    $(document).on("click", "#botonEliminarProductoVenta", function (e) {
         e.preventDefault()
 
         fila = $(this).closest('tr')
@@ -224,14 +231,14 @@ $(document).ready(function () {
     });
 
     // Eliminar producto-Venta
-    $("#formularioEliminarProductoVenta").submit(function (e) { 
+    $("#formularioEliminarProductoVenta").submit(function (e) {
         e.preventDefault();
 
         var id = $('#eliminarProductoVentaId').val()
-        
+
         $.ajax({
             type: "delete",
-            url: "/productos_ventas/"+id,
+            url: "/productos_ventas/" + id,
             success: function (response) {
                 $('#eliminarProductoVenta').modal('hide')
 
@@ -241,16 +248,49 @@ $(document).ready(function () {
                     icon: "success"
                 })
 
+                total()
                 tablaProductosVentas.ajax.reload()
-            },error: function(error){
-               
+            }, error: function (error) {
+
                 swal({
-                    title: "Error al Eliminar producto a la venta: "+error.status,
+                    title: "Error al Eliminar producto a la venta: " + error.status,
                     text: "Por Favor verifique los datos",
                     icon: "error"
                 })
             }
         });
     });
+
+    // Petición para el total de los productos-ventas
+    var total_valor;
+
+    function total() {
+    
+        $.ajax({
+            type: "get",
+            url: "/productos_ventas/total",
+            data: "data",
+            success: function (response) {
+    
+                $('#total').addClass('alert alert-success');
+    
+                response.forEach(element => {
+    
+                    total_valor = element.total_productos_ventas
+                });
+    
+                $('#total').html('Total: $' + total_valor)
+    
+            }, error: function (error) {
+                $('#total').addClass('alert alert-danger');
+                $('#total').html('Hay un error ' + error.status);
+            }
+
+    })
+
+}
+
+total()
+
 
 });

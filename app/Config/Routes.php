@@ -55,6 +55,7 @@ $routes->post('/productos_ventas','ProductoVentaController::crearProductoVenta')
 $routes->get('/productos_ventas/(:num)','ProductoVentaController::mostrarProductoVenta/$1');
 $routes->put('/productos_ventas/(:num)','ProductoVentaController::actualizarProductoVenta/$1');
 $routes->delete('/productos_ventas/(:num)','ProductoVentaController::eliminarProductoVenta/$1');
+$routes->get('/productos_ventas/total','ProductoVentaController::totalProductoVenta');
 
 
 

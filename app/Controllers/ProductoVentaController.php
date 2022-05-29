@@ -22,7 +22,8 @@ class ProductoVentaController extends BaseController
 	public function mostrarProductosVentas(){
        $modelo = new ProductoVenta();
 	   $consulta = $modelo->select('productos_ventas.id as id,productos.nombre as nombre,
-	   productos.precio as precio,productos_ventas.cantidad as cantidad,')
+	   productos.precio as precio,productos_ventas.cantidad as cantidad,
+	   (productos.precio * productos_ventas.cantidad) as total')
 	   ->join('productos','productos.id=productos_ventas.producto_id','inner')
 	   ->findAll();
 	   return $this->response->setJSON($consulta);
@@ -72,5 +73,16 @@ class ProductoVentaController extends BaseController
 		$consulta= $modelo->where('id',$id)->delete();
 
         return $this->response->setJSON($consultaProductoVenta);
+	}
+
+	public function totalProductoVenta(){
+
+		$modelo = new ProductoVenta();
+		$consulta = $modelo->select('sum(productos.precio * cantidad) as total_productos_ventas')
+		->join('productos','productos.id = productos_ventas.producto_id','inner')
+		->findAll();
+
+		return $this->response->setJson($consulta);
+
 	}
 }

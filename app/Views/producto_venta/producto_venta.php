@@ -56,8 +56,19 @@
         
     </div>
 </div>
+
 </form>
 
+<div class="container my-2">
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-12"></div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <div id="total"></div>
+        </div>
+    </div>
+</div>
+
+<form>
 <div class="table-responsive my-3">
     <table class="table table-light" id="tablaProductosVentas">
         <thead>
@@ -65,10 +76,22 @@
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio</th>
+                <th>Total</th>
                 <th>Acciones</th>
             </tr>
         </thead>
     </table>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+    <button type="submit" class="btn btn-success form-control bi bi-check-circle"> Guardar Venta</button>
+    </form>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12">
+    </div>
 </div>
 
 <?= $productos_encontrados ?>
