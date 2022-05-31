@@ -68,7 +68,7 @@
     </div>
 </div>
 
-<form>
+<form id="formularioCrearVenta">
 <div class="table-responsive my-3">
     <table class="table table-light" id="tablaProductosVentas">
         <thead>

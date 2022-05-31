@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Venta extends Model
+class Factura extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'ventas';
+	protected $table                = 'facturas';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDelete        = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['factura_id','producto_id','cantidad'];
+	protected $allowedFields        = ['fecha'];
 
 	// Dates
 	protected $useTimestamps        = false;

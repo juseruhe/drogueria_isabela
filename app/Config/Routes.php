@@ -57,6 +57,16 @@ $routes->put('/productos_ventas/(:num)','ProductoVentaController::actualizarProd
 $routes->delete('/productos_ventas/(:num)','ProductoVentaController::eliminarProductoVenta/$1');
 $routes->get('/productos_ventas/total','ProductoVentaController::totalProductoVenta');
 
+// Factura
+$routes->get('/factura','FacturaController::index');
+
+// Ventas
+$routes->post('/ventas','VentaController::crearVenta');
+$routes->get('/ventas','VentaController::index');
+$routes->get('/ventas/dia','VentaController::mostrarVentasDia');
+$routes->get('/ventas/mes','VentaController::mostrarVentasMes');
+$routes->get('/ventas/anio','VentaController::mostrarVentasAnio');
+
 
 
 /*

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/ventas.css">
+    <link rel="stylesheet" href="css/productos_ventas.css">
 </head>
 
 <body>
@@ -29,7 +31,7 @@
 
     <nav class="row navbar navbar-light bg-light border border-dark">
         <div class="col-lg-4 col-md-4 col-sm-12 ">
-            <a class="navbar-brand btn btn-secondary text-white my-1 form-control" href="#">
+            <a class="navbar-brand btn btn-secondary text-white my-1 form-control" href="/ventas">
                 <i class="bi bi-bar-chart-fill"></i> ESCRITORIO
             </a>
         </div>

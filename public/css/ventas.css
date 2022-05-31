@@ -1,0 +1,14 @@
+#mes.alert.alert-primary{
+  background-color: rgb(45, 162, 167);
+  color: rgb(243, 239, 239)
+}
+
+#dia.alert.alert-warning{
+    background-color: rgb(250, 155, 14);
+    color: rgb(243, 239, 239)
+}
+
+#anio.alert.alert-success{
+    background-color: rgb(4, 143, 73);
+    color: rgb(243, 239, 239)
+}

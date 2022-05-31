@@ -265,32 +265,64 @@ $(document).ready(function () {
     var total_valor;
 
     function total() {
-    
+
         $.ajax({
             type: "get",
             url: "/productos_ventas/total",
             data: "data",
             success: function (response) {
-    
+
                 $('#total').addClass('alert alert-success');
-    
+
                 response.forEach(element => {
-    
+
                     total_valor = element.total_productos_ventas
                 });
-    
-                $('#total').html('Total: $' + total_valor)
-    
+
+                if (total_valor == 0 || total_valor == "null" || total_valor == null || total_valor < 0) {
+                    $('#total').html('Total: $' + 0)
+                } else {
+                    $('#total').html('Total: $' + total_valor)
+                }
+
+
             }, error: function (error) {
                 $('#total').addClass('alert alert-danger');
                 $('#total').html('Hay un error ' + error.status);
             }
 
-    })
+        })
 
-}
+    }
 
-total()
+    total()
 
+    // Crear Venta
+    $('#formularioCrearVenta').submit(function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "post",
+            url: "/ventas",
+            success: function (response) {
+                swal({
+                    title: "Venta Exitosa",
+                    text: "Por Favor Verifique los datos",
+                    icon: "success"
+                })
+
+                total()
+                tablaProductosVentas.ajax.reload()
+
+
+            }, error: function (error) {
+                swal({
+                    title: "Error al vender " + error.status,
+                    text: "Por Favor verifique los datos ",
+                    icon: "error"
+                })
+            }
+        });
+    });
 
 });
