@@ -9,5 +9,8 @@
 <script src="js/productos.js"></script>
 <script src="js/producto_venta.js"></script>
 <script src="js/ventas.js"></script>
+    <!-- Google Charts-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="js/google_charts.js"></script>
 </body>
 </html>

@@ -89,5 +89,17 @@ class VentaController extends BaseController
 		return $this->response->setJSON($consulta);
 	}
 
+	public function mostrarTotalVentas(){
+		$modelo = new Venta();
+		$consulta = $modelo->select('day(facturas.fecha) as dia, 
+		sum(productos.precio * cantidad) as total')
+		->join('productos','productos.id = ventas.producto_id','inner')
+		->join('facturas','facturas.id = ventas.factura_id','inner')
+		->where('month(facturas.fecha)','month(curdate())',false)
+		->groupBy('facturas.fecha')
+		->findAll();
+
+		return $this->response->setJSON($consulta);
+	}
 
 }

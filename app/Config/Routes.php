@@ -66,6 +66,7 @@ $routes->get('/ventas','VentaController::index');
 $routes->get('/ventas/dia','VentaController::mostrarVentasDia');
 $routes->get('/ventas/mes','VentaController::mostrarVentasMes');
 $routes->get('/ventas/anio','VentaController::mostrarVentasAnio');
+$routes->get('/ventas/total','VentaController::mostrarTotalVentas');
 
 
 
